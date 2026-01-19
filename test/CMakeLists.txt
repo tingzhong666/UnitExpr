@@ -4,6 +4,10 @@ project(UnitExprTests)
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+if(MSVC)
+    add_compile_options(/utf-8)
+endif()
+
 # 包含目录
 include_directories(
     ${CMAKE_CURRENT_SOURCE_DIR}
@@ -27,7 +31,7 @@ add_executable(unit_expr_tests ${TEST_SOURCES})
 
 # 链接库
 target_link_libraries(unit_expr_tests
-    ${CMAKE_SOURCE_DIR}/libs/units.lib
+    ${CMAKE_SOURCE_DIR}/../libs/units.lib
 )
 
 # 输出目录
