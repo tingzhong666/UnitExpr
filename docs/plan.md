@@ -23,9 +23,11 @@
    - 无限嵌套括号处理。
 
 5. **验证&优化**（中优先）
+   - 首先保证项目必须能编译通过。
    - 补充 `test/test_framework.hpp`的`evaluate_expression`函数
    - 然后根据`test/readme.md`运行测试
    - 测试不通过，即任务不结束
+   - 只能使用这个测试，不能另外编写。
 
 ### 风险&依赖
 - Units与exprtk兼容：需自定义适配器（包装exprtk符号表支持单位类型）。
