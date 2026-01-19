@@ -3,3 +3,5 @@
 - docs为文档存放路径
 - libs为三方库路径
 - 下载时，绕过ssl
+- cmake路径`C:\Program Files\Microsoft Visual Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe`
+- 编译器`msvc2022_amd64`
