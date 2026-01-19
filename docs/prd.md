@@ -1,18 +1,18 @@
-编译环境：
+## 编译环境：
 - cmake工程
 - msvc2022_amd64编译器
 - cmake路径`C:\Program Files\Microsoft Visual Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe`
 
-技术栈：
+## 技术栈：
 - cpp14
 - exprtk
 - LLNL/Units
 
 
-测试：
+## 测试：
 60个
 
-基础 (36个)
+### 基础 (36个)
 1-8: 数值/常数
 
 9-16: 运算符
@@ -21,7 +21,7 @@
 
 29-36: 变量
 
-组合测试 (24个)
+### 组合测试 (24个)
 37: sin(30deg)*2m/s + cos(45deg)*km/h
 
 38: (x+1)*y*m^2/s^2 (x=2kg,y=3)
