@@ -52,12 +52,11 @@ CMakeLists.txt
 47-60: 错误测试 (单位不匹配等)
 
 ## 实施顺序
-1. 下载 LLNL/Units → libs/units/
-2. CMakeLists.txt
-3. unit_parser.hpp (m/s → quantity)
-4. dim_expr.hpp (exprtk包装)
-5. main.cpp (测试)
-6. 验证运行
+1. CMakeLists.txt
+2. unit_parser.hpp (m/s → quantity)
+3. dim_expr.hpp (exprtk包装)
+4. main.cpp (测试)
+5. 验证运行
 
 ## 关键创新
 - 正则解析复合单位 (km/h → km/h)
@@ -66,5 +65,5 @@ CMakeLists.txt
 
 ## 状态: 已保存，不执行
 - exprtk ✓ 可用
-- LLNL/Units ❌ 需下载
+- LLNL/Units ✓ 可用
 - C++14 环境 ✓
