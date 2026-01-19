@@ -4,8 +4,8 @@
 构建 C++14 量纲表达式计算器，支持运行时用户输入解析+计算。
 
 ## 技术栈
-- **解析**: libs/exprtk/exprtk.hpp (已存在，纯头文件)
-- **量纲**: LLNL/Units (下载到 libs/units/)
+- **解析**: exprtk
+- **量纲**: LLNL/Units
 - **测试**: 60+ 测试用例 (main.cpp 调用)
 
 ## 文件结构
