@@ -42,23 +42,43 @@ void RegisterLLNLUnitsMinimal(asIScriptEngine* engine)
 
     engine->RegisterGlobalProperty("const precise_unit m", (void*)&units::m);
 }
-
+void MessageCallback(const asSMessageInfo *msg, void *param) {
+    const char *type = "ERR ";
+    if (msg->type == asMSGTYPE_WARNING) type = "WARN";
+    else if (msg->type == asMSGTYPE_INFORMATION) type = "INFO";
+    printf("%s (%d, %d) : %s : %s\n", msg->section, msg->row, msg->col, type, msg->message);
+}
 void main()
 {
     auto engine = asCreateScriptEngine();
     RegisterLLNLUnitsMinimal(engine);
+    engine->SetMessageCallback(asFUNCTION(MessageCallback), 0, asCALL_CDECL);
 
     asIScriptModule *mod = engine->GetModule("temp", asGM_ALWAYS_CREATE);
     mod->AddScriptSection("expr", "precise_measurement GetResult() { return 1 * m + 2 * m; }");
-    mod->Build();
+    auto r = mod->Build();
+    if (r < 0) {
+        printf("编译失败\n");
+        return;
+    }
     asIScriptContext *ctx = engine->CreateContext();
     asIScriptFunction *func = mod->GetFunctionByName("GetResult");
     ctx->Prepare(func);
-    ctx->Execute();
-    auto resultObj = ctx->GetReturnObject();
+    r = ctx->Execute();
+    if (r != asEXECUTION_FINISHED) {
+        printf("执行失败: %d\n", r);
+        if (r == asEXECUTION_EXCEPTION) {
+            printf("异常: %s\n", ctx->GetExceptionString());
+        }
+        return;
+    }
+    auto resultObj = ctx->GetReturnAddress();
+    if (resultObj == nullptr) {
+        printf("返回对象为空\n");
+        return;
+    }
     ctx->Release();
 
     auto result = static_cast<precise_measurement*>(resultObj);
     printf("结果: %g\n", result->value());
-
 }
